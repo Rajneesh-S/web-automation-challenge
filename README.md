@@ -1,17 +1,17 @@
-# parabank_last5
+# openmrs_last5
 Overview
 -
-ParaBank is a demo site used for simulating a realistic online banking website ([link](https://parabank.parasoft.com/parabank/index.htm)). It has the following features : 
-1. Register
-2. Login
-3. Reset password
-4. Open Account
-5. Account Overview
-6. Transfer funds
-7. Bill pay
-8. Search transactions
-9. Loan Request
-10. Update contact info
+OPENMRS application is a demo site used for simulating a realistic Medical Record System ([link](https://demo.openmrs.org/)). It has the following features
+1. Login
+2. Register Patient
+3. Find Patient and Patient record details
+4. Manage privileges in Configure metadata
+5. Mangae service types in appointment scheduling
+6. Capture vitals
+7. Manage accounts in System administration
+8. Change password in My account
+9. Visit workflow for a patient
+10. Edit registration information
  
 Write **Web automation** tests for the **last 5** features of this application.
 
