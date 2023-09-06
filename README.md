@@ -15,8 +15,7 @@ OPENMRS application is a demo site used for simulating a realistic Medical Recor
  
 Write **Web automation** tests for the **last 5** features of this application.
 
-**Credentials**
-admin/Admin123
+**Credentials** - admin/Admin123
 
 Expectations:
 -
