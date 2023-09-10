@@ -1,6 +1,7 @@
 node_modules
-acountsSystemadministration.js
+
 changepassword.js
 test.e2e.js
 capturevitals.js
 editRegistration.js
+vistWorkflow.js

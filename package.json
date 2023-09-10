@@ -5,14 +5,15 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "wdio": "wdio run ./wdio.conf.js"
+    "wdio": "wdio run ./wdio.conf.js",
+    "report": "allure generate allure-results && allure open"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  
   "dependencies": {
-    "@wdio/cli": "^8.16.4"
+    "@wdio/cli": "^8.16.4",
+    "allure-commandline": "^2.24.0"
   },
   "devDependencies": {
     "@babel/core": "^7.22.15",
