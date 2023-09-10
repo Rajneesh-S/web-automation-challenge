@@ -10,6 +10,7 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
+  
   "dependencies": {
     "@wdio/cli": "^8.16.4"
   },
