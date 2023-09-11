@@ -1,26 +1,27 @@
-// import { expect } from 'chai';
 
-describe(' visit the login page', function(){
+
+import captueVitalPage from "../pageobjects/captueVital.page";
+
+import loginpage from "../pageobjects/loginpage";
+
+describe('Login functionality', () => {
     it('should able to go at the login page  ', async()=>{
-        await browser.url('/');
-        await browser.pause(3000);
-        await expect(browser).toHaveTitle('Login');
-    })
+                await browser.url('/');
+                await browser.pause(3000);
+                await expect(browser).toHaveTitle('Login');
+     });
 
-    it('should able to login',async()=>{
-        let userName = await $('[id="username"]');
-        await userName.setValue('admin');
-        let userPassword = await $('[id="password"]');
-        await userPassword.setValue('Admin123');
-        await $('[id="Inpatient Ward"]').click();
-        await $('[id="loginButton"]').click();
-        // await browser.pause(3000);
-        await expect(browser).toHaveTitle('Home');
 
-    })
-    
-    
-})
+  it('should be able to login', async () => {
+    await browser.url('/');
+    await $('[id="Inpatient Ward"]').click();
+    await loginpage.login('admin', 'Admin123');
+    await expect(browser).toHaveTitle('Home');
+  });
+});
+
+
+
 
 describe('register a patient',function(){
     it('register patient',async()=>{
@@ -57,25 +58,19 @@ describe('cheking the capture vitals', function(){
 
     })
     it('should be clickable',async()=>{
-        let capturevitalButton = await $('[class="icon-vitals"]');
-        await expect(capturevitalButton).toBeClickable();
-        await capturevitalButton.click(); 
+        // let capturevitalButton = await $('[class="icon-vitals"]');
+        await expect(captueVitalPage.capturevitalButton).toBeClickable();
+        await captueVitalPage.capturevitalButton.click(); 
 
         await browser.pause(3000);
     }) 
     
-    // it('should be able to search by identifier id',async()=>{
-    //     let serachButton = await $('[id="patient-search"]');
-    //     await serachButton.setValue('10012R');
-    //     await expect($('//*[@id="patient-search-results-table"]/tbody/tr[1]/td[2]')).toBeDisplayed();
-    //     await browser.pause(2000);
-        
-    // })
+    
 
 
     it('should be able to search by name',async()=>{
-        let serachButton = await $('[id="patient-search"]');
-        await serachButton.setValue('rishi');
+        // let serachButton = await $('[id="patient-search"]');
+        await captueVitalPage.serachButton.setValue('rishi');
         await expect($('//*[@id="patient-search-results-table"]/tbody/tr[1]/td[2]')).toBeDisplayed();
         await browser.pause(3000);
 
@@ -93,16 +88,16 @@ describe('cheking the capture vitals', function(){
     })
 
     it('should get error notification after entering height more than limit ',async()=>{
-        let heightInput = await $('//*[@id="w8"]');
-        await heightInput.setValue(400);
+        // let heightInput = await $('//*[@id="w8"]');
+        await captueVitalPage.heightInput.setValue(400);
         await $('//*[@id="next-button"]/icon').click();
         await expect($('//*[@id="w7"]')).toBeDisplayed();
 
     })//negative test
 
     it('should be able to fill the height',async()=>{
-        let heightInput = await $('//*[@id="w8"]');
-        await heightInput.setValue(170);
+        // let heightInput = await $('//*[@id="w8"]');
+        await captueVitalPage.heightInput.setValue(170);
         await $('//*[@id="next-button"]/icon').click();
         await expect($('//*[@id="formBreadcrumb"]/li[1]/ul/li[1]/i')).toBeDisplayed();
 
@@ -110,16 +105,16 @@ describe('cheking the capture vitals', function(){
 
 
     it('should be able to fill the wieght',async()=>{
-        let wightInput = await $('//*[@id="w10"]');
-        await wightInput.setValue(80);
+        // let wightInput = await $('//*[@id="w10"]');
+        await captueVitalPage.wightInput.setValue(80);
         await $('//*[@id="next-button"]/icon').click();
         await expect($('//*[@id="vitals"]/fieldset[3]/h3')).toBeDisplayed();
         
     })
 
     it('should be able to save the record after filling only  hieght and weight  ',async()=>{
-        let confirmButton = await $('//*[@id="formBreadcrumb"]/li[2]/span');
-        await confirmButton.click();
+        // let confirmButton = await $('//*[@id="formBreadcrumb"]/li[2]/span');
+        await captueVitalPage.confirmButton.click();
         
         await expect($('//*[@id="confirmationQuestion"]/p[1]/button')).toBeDisplayed();
         
