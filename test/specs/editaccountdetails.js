@@ -16,7 +16,7 @@ describe('Login functionality', () => {
   it('should be able to login', async () => {
     await browser.url('/');
     await $('[id="Inpatient Ward"]').click();
-    await loginpage.login('raj', 'Rajneesh123');
+    await loginpage.login('virat', 'Rajneesh987');
     await expect(browser).toHaveTitle('Home');
   });
 });

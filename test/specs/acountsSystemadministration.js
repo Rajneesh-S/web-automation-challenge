@@ -74,13 +74,13 @@ describe('checking the functionalities in manage accounts', function(){
         await expect($('//*[@id="adminui-accounts"]/form/div[1]/fieldset/div/p[3]/label')).toBeClickable();
         await expect($('//*[@id="adminui-accounts"]/form/div[1]/fieldset/div/p[4]/label')).toBeClickable();
         let male = await $('#adminui-gender-0-field').click()
-
+ 
     })
 
     it('should be able to fill user accounts details', async()=>{
         await $('#adminui-addUserAccount').click();
         // let userName = await $('#adminui-username-field');
-        await accountSystemPage.userName.setValue('raj');
+        await accountSystemPage.userName.setValue('virat');
         // let userPassword = await $('#adminui-password-field');
         await accountSystemPage.userPassword.setValue('Rajneesh123');
         // let confirmPassword = await $('#adminui-confirmPassword-field');

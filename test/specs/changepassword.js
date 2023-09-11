@@ -16,7 +16,7 @@ describe('Login functionality', () => {
   it('should be able to login', async () => {
     await browser.url('/');
     await $('[id="Inpatient Ward"]').click();
-    await loginpage.login('raj', 'Rajneesh987');
+    await loginpage.login('virat', 'Rajneesh123');
     await expect(browser).toHaveTitle('Home');
   });
 });
@@ -51,12 +51,12 @@ describe('change the password',function(){
         // let changePassButton = await $('//*[@id="tasks"]/a[1]/div/i');
         await changePasswordPage.changePassButton.click();
         // let oldPassInput = await $('#oldPassword-field');
-        await changePasswordPage.oldPassInput.setValue('Rajneesh987');
+        await changePasswordPage.oldPassInput.setValue('Rajneesh123');
 
-         await $('#newPassword-field').setValue('Rajneesh123');
+         await $('#newPassword-field').setValue('Rajneesh987');
          await browser.pause(3000);
         //  let confirmPassword = await $('#confirmPassword-field');
-         await changePasswordPage.confirmPassword.setValue('Rajneesh123')
+         await changePasswordPage.confirmPassword.setValue('Rajneesh987')
 
         //  let saveButton = await $('#save-button');
          await changePasswordPage.saveButton.click();
