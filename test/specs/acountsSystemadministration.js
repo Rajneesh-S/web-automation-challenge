@@ -27,14 +27,14 @@ describe('checking the accounts in system administration', function(){
     it('should go to system administration and check its  availbilty',async()=>{
 
        
-        // let systemadministrationButton = await $('//*[@id="coreapps-systemadministration-homepageLink-coreapps-systemadministration-homepageLink-extension"]/i');
+        
         await expect(accountSystemPage.systemadministrationButton).toBeDisplayed();
         await expect(accountSystemPage.systemadministrationButton).toBeClickable();
         await accountSystemPage.systemadministrationButton.click();
     })
 
     it('should check the avilbility of manage accounts', async()=>{
-        // let manageAccountButton = await $('#org-openmrs-module-adminui-accounts-app');
+        
         await expect(accountSystemPage.manageAccountButton).toBeDisplayed();
         await expect(accountSystemPage.manageAccountButton).toBeClickable();
         await accountSystemPage.manageAccountButton.click();
@@ -60,41 +60,41 @@ describe('checking the accounts in system administration', function(){
 
 describe('checking the functionalities in manage accounts', function(){
     it('should be able to search', async()=>{
-        // await $('[aria-controls="list-accounts"]').setValue('Su');//just searching by start of the word (can do for whole word)
+        
         await accountSystemPage.search.setValue('Su');
-        // await expect($('//*[@id="list-accounts"]/tbody/tr/td[1]')).toBeDisplayed();
+        
         await expect(accountSystemPage.foundaccount).toBeDisplayed();
         await browser.pause(2000);
     })
 
     it('should be able to add person details in Add new account',async()=>{
-        // let createAccountButton = await $('//*[@id="content"]/a');
+       
         await accountSystemPage.createAccountButton.click();
-        // await $('[id="adminui-familyName-field"]').setValue('Singh');
+       
         await accountSystemPage.familyname.setValue('Singh');
-        // await $('#adminui-givenName-field').setValue('Raj');
+        
         await accountSystemPage.givenname.setValue('Raj');
 
         
-        // await expect($('//*[@id="adminui-accounts"]/form/div[1]/fieldset/div/p[3]/label')).toBeClickable();
+        
         await expect(accountSystemPage.malebox).toBeClickable();
-        // await expect($('//*[@id="adminui-accounts"]/form/div[1]/fieldset/div/p[4]/label')).toBeClickable();
+        
         await expect(accountSystemPage.femalebox).toBeClickable();
-        // let male = await $('#adminui-gender-0-field').click()
+        
         let male = await accountSystemPage.male.click();
  
     })
 
     it('should be able to fill user accounts details', async()=>{
         await $('#adminui-addUserAccount').click();
-        // let userName = await $('#adminui-username-field');
+    
         await accountSystemPage.userName.setValue('virat');
-        // let userPassword = await $('#adminui-password-field');
+       
         await accountSystemPage.userPassword.setValue('Rajneesh123');
-        // let confirmPassword = await $('#adminui-confirmPassword-field');
+       
         await accountSystemPage.confirmPassword.setValue('Rajneesh123');
         await browser.pause(4000);
-        // let selectPrivilage = await $('#adminui-privilegeLevel-field');
+       
         await accountSystemPage.selectPrivilage.selectByAttribute('value','ab2160f6-0941-430c-9752-6714353fbd3c');
 
         let forcepasswordchange = await $('#adminui-forceChangePassword');
@@ -109,7 +109,7 @@ describe('checking the functionalities in manage accounts', function(){
 
     
     it('sould be able to select evry checkppoint',async()=>{
-        // let administrativeCapabilitescheck = await $('//*[@id="adminui-capabilities-Application: Administers System"]');
+        
         await expect(accountSystemPage.administrativeCapabilitescheck).toBeClickable();
         await accountSystemPage.administrativeCapabilitescheck.click();
         await $('//*[@id="adminui-capabilities-Application: Configures Forms"]').click();
@@ -154,21 +154,21 @@ describe('checking the functionalities in manage accounts', function(){
     })
 
     it('should be able to fill provider details',async()=>{
-        // let addProviderAccCheck = await $('#adminui-addProviderAccount');
+    
         await expect(accountSystemPage.addProviderAccCheck).toBeClickable();
         await accountSystemPage.addProviderAccCheck.click();
 
-        // let identifierInput = await $('#adminui-identifier-field');
+        
         await accountSystemPage.identifierInput.setValue('harsh');
-        // let provioderRoleInput  = await $('#adminui-providerRole-field');
+        
         await accountSystemPage.provioderRoleInput.selectByAttribute('value','c110f9bc-c65f-44a2-a028-2af7e8fff534');
         await browser.pause(6000);
      })
 
      it('shouuld be able to save and cancel ', async()=>{
-        // let cancelButton = await $('#adminui-account-cancel');
+    
         await expect(accountSystemPage.cancelButton).toBeClickable();
-        // let saveButton = await $('#save-button');
+        
         await expect(accountSystemPage.saveButton).toBeClickable();
         await accountSystemPage.saveButton.click();
         await browser.pause(5000);
