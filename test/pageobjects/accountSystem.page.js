@@ -46,6 +46,34 @@ class accountSystem{
     get saveButton(){
         return   $('#save-button');
     }
+
+    get search(){
+        return   $('[aria-controls="list-accounts"]');
+    }
+    
+    get foundaccount(){
+        return   $('//*[@id="list-accounts"]/tbody/tr/td[1]');
+    }
+
+    get familyname(){
+        return   $('[id="adminui-familyName-field"]');
+    }
+    get givenname(){
+        return $('#adminui-givenName-field');
+
+    }
+
+    get malebox(){
+        return $('//*[@id="adminui-accounts"]/form/div[1]/fieldset/div/p[3]/label');
+
+    }
+    get femalebox(){
+        return $('//*[@id="adminui-accounts"]/form/div[1]/fieldset/div/p[4]/label')
+
+    }
+    get male(){
+        return $('#adminui-gender-0-field');
+    }
     
 
 } 

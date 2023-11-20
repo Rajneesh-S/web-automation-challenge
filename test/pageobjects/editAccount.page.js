@@ -29,7 +29,27 @@ class editAccountDetails{
     get  familyNameInputButton(){
         return $('#adminui-familyName-field');
     }
+    get  content(){
+        return $('//*[@id="content"]/a')
+    }  
+
+    get  list(){
+        return $('//*[@id="list-accounts"]/tbody/tr/td[1]');
+    }
+
+    get  persondetails(){
+        return  $('//*[@id="adminui-person-details"]/form/div/fieldset/div[1]/i');
+    }
+
+
+    get  save(){
+        return $('//*[@id="adminui-person-details"]/form/div/fieldset/div[1]/table/tbody/tr[1]/td');
+    }
    
+
+    get  persontr2(){
+        return  $('//*[@id="adminui-person-details"]/form/div/fieldset/div[1]/table/tbody/tr[2]/td');
+    }
 
 }
 export default new editAccountDetails();

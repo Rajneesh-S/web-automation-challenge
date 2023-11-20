@@ -2,6 +2,8 @@
 
 import editRegistrationInfoPage from "../pageobjects/editRegistrationInfo.page";
 import loginpage from "../pageobjects/loginpage";
+import captueVitalPage from "../pageobjects/captueVital.page";
+
 
 describe('Login functionality', () => {
     it('should able to go at the login page  ', async()=>{
@@ -21,26 +23,47 @@ describe('Login functionality', () => {
 
 
 
+
+
 describe('register a patient',function(){
     it('register patient',async()=>{
-        await $('#referenceapplication-registrationapp-registerPatient-homepageLink-referenceapplication-registrationapp-registerPatient-homepageLink-extension').click();
-        await $('[name="givenName"]').setValue('gill');
-        await $('[name="familyName"]').setValue('singh');
+        
+        await captueVitalPage.registerpatient.click();
+
+        
+        await captueVitalPage.givenname.setValue('rishi');
+        await captueVitalPage.familyname.setValue('singh');
+       
+        await captueVitalPage.nextButton.click();
+
+       
+        await captueVitalPage.genderfield.click();
+
+        
+        await captueVitalPage.gfop1.click();
+       
+        await captueVitalPage.nextButtonicon.click();
+        
+        await captueVitalPage.birthdate.setValue('12');
+        
+        await captueVitalPage.birthmonth.selectByAttribute('value','2');
+        
+        
+        await captueVitalPage.birthyear.setValue('2023');
         await $('#next-button').click();
-        await $('#gender-field').click();
-        await $('//*[@id="gender-field"]/option[1]').click();
-        await $('//*[@id="next-button"]/icon').click();
-        await $('#birthdateDay-field').setValue('12');
-        await $('#birthdateMonth-field').selectByAttribute('value','2');
-        await $('#birthdateYear-field').setValue('2023');
-        await $('#next-button').click();
-        await $('#address1').setValue('qwer');
-        await $('#confirmation_label').click();
+
+        
+        await captueVitalPage.address.setValue('qwer');
+        
+        await captueVitalPage.confirmation.click();
         await $('//*[@id="submit"]').click();
         await browser.pause(4000);
-        await $('//*[@id="org.openmrs.module.coreapps.createVisit"]/div/div[2]').click();
-        await $('#start-visit-with-visittype-confirm').click();
-        await $('//*[@id="breadcrumbs"]/li[1]/a/i').click();
+        
+        await captueVitalPage.openmrs.click();
+        
+        await captueVitalPage.startvisit.click();
+        
+        await captueVitalPage.breadcrumbs.click();
   
         
     })
@@ -49,55 +72,64 @@ describe('register a patient',function(){
 
 describe('edit the registration information', function(){
     it('should able to goto the patient record page', async()=>{
-        // let patientRecordButton = await $('//*[@id="coreapps-activeVisitsHomepageLink-coreapps-activeVisitsHomepageLink-extension"]');
+        
         await editRegistrationInfoPage.patientRecordButton.click();
          await browser.pause(3000);
 
-        await expect($('//*[@id="content"]/h2')).toBeDisplayed();
+       
+        await expect(editRegistrationInfoPage.check).toBeDisplayed()
        
     })
 
     it('should be able to search patient ',async()=>{
-        // let serachButton = await $('#patient-search');
-        await $('//*[@id="patient-search"]').setValue('gill');
+        
+        await editRegistrationInfoPage.patientsearch.setValue('gill');
         await browser.pause(3000);
-        // await expect($('//*[@id="patient-search-results-table"]/tbody/tr/td[2]')).toBeDisplayed();
+       
         
         
 
     })
 
     it('should be able to goto the  patient details page ',async()=>{
-        await $('//*[@id="patient-search-results-table"]/tbody/tr/td[2]').click();
+        
+        await editRegistrationInfoPage.patientsearchtable.click();
 
     
      })
 
     it('should be able to visit the edit information page', async()=>{
 
-        await $('//*[@id="application.registrationapp.summary.editPatientLink"]/div/div[2]').click();
+       
+        await editRegistrationInfoPage.editinfo.click();
 
         
-        expect('//*[@id="content"]/div[9]/div[1]/div/div[1]/div[1]/div[1]/h3').toBeDisplayed();
+       
+        expect(editRegistrationInfoPage.editinfocheck).toBeDisplayed();
 
     })
 
     it('should be able to edit the name in demographics ', async()=>{
 
-        await $('#demographics-edit-link').click();
+        
+        await editRegistrationInfoPage.demography.click()
        await browser.pause(3000);
 
-        // let givenNameInput = await $('[name="givenName"]');
+       
         
         await editRegistrationInfoPage.givenNameInput.setValue('rohit');
 
         
-        await $('#save-form').click();
+        
+        await editRegistrationInfoPage.saveform.click();
        
 
-        // let confirmButton = await $('#registration-submit');
+       
         await editRegistrationInfoPage.confirmButton.click();
-        let textName = await $('//*[@id="content"]/div[9]/div[1]/div/div[1]/div[1]/div[2]/div[1]/p').getText();
+        
+         let textName = await editRegistrationInfoPage.text.getText();
+
+
 
         await expect(textName).toEqual('rohit');
 
@@ -107,7 +139,7 @@ describe('edit the registration information', function(){
     })
 
     it('should be able to visit the edit the contact info page', async()=>{
-    //    let editContactinfo =  await $('#contactInfo-edit-link');
+    
        await editRegistrationInfoPage.editContactinfo.click();
        await expect($('//*[@id="content"]/h2')).toBeDisplayed();
         
@@ -118,38 +150,44 @@ describe('edit the registration information', function(){
     })
 
     it('should be abale to edit the adress ', async()=>{
-        // let address1 = await $('//*[@id="address1"]');
+        
         await editRegistrationInfoPage.address1.setValue('domlur');
 
-        // let saveButton = await $('//*[@id="next-button"]/icon');
+      
         await editRegistrationInfoPage.saveButton.click();
 
-        await expect($('//*[@id="phoneNumberLabel"]/p/label')).toBeDisplayed();
+        
+        await expect(editRegistrationInfoPage.phonenumberlabel).toBeDisplayed();
     })
 
     it('should be abale to edit the phone number  less than 10', async()=>{
-        let phoneNumber  = await $('[name="phoneNumber"]');
+        let phoneNumber  = await editRegistrationInfoPage.phnum;
         await phoneNumber.setValue('5678');
 
         
-       await  $('#next-button').click();
+   
+        await editRegistrationInfoPage.nextButton.click();
 
-        await expect($('//*[@id="dataCanvas"]/div/p[2]/span')).toBeDisplayed();
+        
+        await expect(editRegistrationInfoPage.phcheck).toBeDisplayed();
     })//negative test
 
     it('should be abale to edit the phone number ', async()=>{
-        // let phoneNumber  = await $('//*[@id="formBreadcrumb"]/li[1]/ul/li[2]/span');
+       
         await editRegistrationInfoPage.phoneNumber.click();
 
-        // let editphoneNumber = await $('[name="phoneNumber"]');
+        
         await editRegistrationInfoPage.editphoneNumber.setValue('9787654532');
 
         
-        await $('#next-button').click();
+        
+        await editRegistrationInfoPage.nextButton.click();
 
-        await expect($('//*[@id="dataCanvas"]/div/p[2]/span')).toBeDisplayed();
 
-        // let submitButton =await $('#registration-submit');
+    
+        await expect(editRegistrationInfoPage.phcheck).toBeDisplayed();
+
+        
         await editRegistrationInfoPage.submitButton.click();
     })
 

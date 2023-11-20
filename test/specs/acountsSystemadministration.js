@@ -60,20 +60,28 @@ describe('checking the accounts in system administration', function(){
 
 describe('checking the functionalities in manage accounts', function(){
     it('should be able to search', async()=>{
-        await $('[aria-controls="list-accounts"]').setValue('Su');//just searching by start of the word (can do for whole word)
-        await expect($('//*[@id="list-accounts"]/tbody/tr/td[1]')).toBeDisplayed();
+        // await $('[aria-controls="list-accounts"]').setValue('Su');//just searching by start of the word (can do for whole word)
+        await accountSystemPage.search.setValue('Su');
+        // await expect($('//*[@id="list-accounts"]/tbody/tr/td[1]')).toBeDisplayed();
+        await expect(accountSystemPage.foundaccount).toBeDisplayed();
         await browser.pause(2000);
     })
 
     it('should be able to add person details in Add new account',async()=>{
         // let createAccountButton = await $('//*[@id="content"]/a');
         await accountSystemPage.createAccountButton.click();
-        await $('[id="adminui-familyName-field"]').setValue('Singh');
-        await $('#adminui-givenName-field').setValue('Raj');
+        // await $('[id="adminui-familyName-field"]').setValue('Singh');
+        await accountSystemPage.familyname.setValue('Singh');
+        // await $('#adminui-givenName-field').setValue('Raj');
+        await accountSystemPage.givenname.setValue('Raj');
+
         
-        await expect($('//*[@id="adminui-accounts"]/form/div[1]/fieldset/div/p[3]/label')).toBeClickable();
-        await expect($('//*[@id="adminui-accounts"]/form/div[1]/fieldset/div/p[4]/label')).toBeClickable();
-        let male = await $('#adminui-gender-0-field').click()
+        // await expect($('//*[@id="adminui-accounts"]/form/div[1]/fieldset/div/p[3]/label')).toBeClickable();
+        await expect(accountSystemPage.malebox).toBeClickable();
+        // await expect($('//*[@id="adminui-accounts"]/form/div[1]/fieldset/div/p[4]/label')).toBeClickable();
+        await expect(accountSystemPage.femalebox).toBeClickable();
+        // let male = await $('#adminui-gender-0-field').click()
+        let male = await accountSystemPage.male.click();
  
     })
 

@@ -15,6 +15,10 @@ class changePassword{
         return $('#confirmPassword-field');
         
     }
+    get newPassword(){
+        return  $('#newPassword-field');
+        
+    }
 
     get saveButton(){
         return $('#save-button');
